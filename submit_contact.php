@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * On ne traite pas les super globales provenant de l'utilisateur directement,
+ * ces données doivent être testées et vérifiées.
+ */
+
 $postData = $_POST;
 
 if (
@@ -13,15 +18,15 @@ if (
 }
 
 $isFileLoaded = false;
-// Tester si le fichier a bien été envoyé et s'il n'y a pas des erreurs
+// Testons si le fichier a bien été envoyé et s'il n'y a pas des erreurs
 if (isset($_FILES['screenshot']) && $_FILES['screenshot']['error'] === 0) {
-    // Tester, si le fichier est trop volumineux
+    // Testons, si le fichier est trop volumineux
     if ($_FILES['screenshot']['size'] > 1000000) {
         echo "L'envoi n'a pas pu être effectué, erreur ou image trop volumineuse";
         return;
     }
 
-    // Tester, si l'extension n'est pas autorisée
+    // Testons, si l'extension n'est pas autorisée
     $fileInfo = pathinfo($_FILES['screenshot']['name']);
     $extension = $fileInfo['extension'];
     $allowedExtensions = ['jpg', 'jpeg', 'gif', 'png'];
@@ -30,7 +35,7 @@ if (isset($_FILES['screenshot']) && $_FILES['screenshot']['error'] === 0) {
         return;
     }
 
-    // Tester, si le dossier uploads est manquant
+    // Testons, si le dossier uploads est manquant
     $path = __DIR__ . '/uploads/';
     if (!is_dir($path)) {
         echo "L'envoi n'a pas pu être effectué, le dossier uploads est manquant";
