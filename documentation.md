@@ -1,0 +1,1 @@
+création de fe fichier pour clarifier le code et qui sera dans les prochains jours supprimer et remplacer par un document généré automatiquement 
