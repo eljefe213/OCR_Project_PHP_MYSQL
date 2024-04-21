@@ -1,1 +1,1 @@
-documentation.md servira de documentation pour le projet + un générateur de documentation 
+documentation.md servira de documentation pour le projet + un générateur de documentation PhpDocumentor
